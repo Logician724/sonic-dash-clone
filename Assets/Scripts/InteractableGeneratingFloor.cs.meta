@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c73fcedc1899d254f9f822dd9f9121ba
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - blueShpere: {fileID: 5142358679282378718, guid: 940247dfc6a3c0e44adf62e96a476123,
+      type: 3}
+  - coin: {fileID: 4690022565244640632, guid: 31df0c20958994649b1157d5fb867a76, type: 3}
+  - ironBall: {fileID: 7898911917930367032, guid: df3eb9abfae95eb40b4fa41d61c8389a,
+      type: 3}
+  - bomb: {fileID: 5794222948693558079, guid: 97d74afbbb8db964fa8baeae8b97514a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
