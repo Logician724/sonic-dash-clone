@@ -15,6 +15,7 @@ public class Bomb : MonoBehaviour
             if(!DashSceneController.isInvincible){
                 controller.EndGame();
             }
+            Destroy(gameObject);
         }
     }
 }

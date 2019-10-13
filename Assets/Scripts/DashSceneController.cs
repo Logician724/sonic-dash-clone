@@ -11,7 +11,7 @@ public class DashSceneController : MonoBehaviour
     public float boostMeterMaxValue = 50;
     private float timeLimit = 60;
 
-    private float timeAdded = 0f;
+    private float distanceCovered = 0f;
 
     public Text timerText;
 
@@ -25,10 +25,13 @@ public class DashSceneController : MonoBehaviour
     {
         boostMeter.maxValue = boostMeterMaxValue;
         InvokeRepeating("UpdateTimer", 0f, 1f);
+        
     }
 
     void Update()
     {
+        distanceCovered += InfinitelyMovingFloor.movementSpeed * Time.deltaTime;
+        distanceText.text = distanceCovered + "";
         timerText.text = timeLimit + "";
         if (timeLimit <= 0)
         {
@@ -36,9 +39,13 @@ public class DashSceneController : MonoBehaviour
             EndGame();
         }
 
-        if (boostMeter.value >= boostMeter.maxValue)
+        if (boostMeter.value >= boostMeter.maxValue && !isInvincible)
         {
-            ResetBoostMeter();
+
+            isInvincible = true;
+            InfinitelyMovingFloor.movementSpeed = InfinitelyMovingFloor.movementSpeed * 2;
+            Invoke("EndInvincibleMode", 5f);
+
         }
     }
 
@@ -57,20 +64,14 @@ public class DashSceneController : MonoBehaviour
         boostMeter.value = 0;
     }
 
-    private void ChangeTimeLimit(float deltaTime)
+    public void ChangeTimeLimit(float deltaTime)
     {
         timeLimit += deltaTime;
     }
 
     private void UpdateTimer()
     {
-        ChangeTimeLimit(-1f + timeAdded );
-        timeAdded = 0f;
-    }
-
-    public void AddToTimer(float deltaTime)
-    {
-        timeAdded += deltaTime;
+        ChangeTimeLimit(-1f);
     }
 
     public float GetTimeLimit()
@@ -90,4 +91,11 @@ public class DashSceneController : MonoBehaviour
         SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
     }
 
+
+    private void EndInvincibleMode()
+    {
+        isInvincible = false;
+        InfinitelyMovingFloor.movementSpeed = InfinitelyMovingFloor.movementSpeed / 2f;
+        ResetBoostMeter();
+    }
 }

@@ -5,6 +5,7 @@ public class InfinitelyMovingFloor : MonoBehaviour
     public GameObject floorPrefab;
     private Camera mainCamera;
 
+    public static float movementSpeed = 4f;
     private bool isNewFloorCreated = false;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,9 @@ public class InfinitelyMovingFloor : MonoBehaviour
     {
         if (GameStatus.Play)
         {
-            transform.Translate(new Vector3(0, 0, -4f * Time.deltaTime));
+
+            transform.Translate(new Vector3(0, 0, movementSpeed * -1f * Time.deltaTime));
+
             // Whenever the edge of the floor is 4 meters away from the camera's far clip plane create a new floor to maintain the
             // Illusion of infinite floor
             if (!isNewFloorCreated)

@@ -18,7 +18,7 @@ public class IronBall : MonoBehaviour
         {
             if (!DashSceneController.isInvincible)
             {
-                controller.AddToTimer(-10f);
+                controller.ChangeTimeLimit(-10f);
             }
             Destroy(gameObject);
         }

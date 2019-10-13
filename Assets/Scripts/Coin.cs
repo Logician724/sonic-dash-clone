@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.CompareTag("Sonic"))
         {
-            controller.AddToTimer(2f);
+            controller.ChangeTimeLimit(2f);
             Destroy(gameObject);
         }
     }

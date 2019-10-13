@@ -15,7 +15,7 @@ public class BlueSphere : MonoBehaviour
     {
         if (other.CompareTag("Sonic"))
         {
-            controller.ChangeBoostMeterValue(2f);
+            controller.ChangeBoostMeterValue(10f);
             Destroy(gameObject);
 
         }
