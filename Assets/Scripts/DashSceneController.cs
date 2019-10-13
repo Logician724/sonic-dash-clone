@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DashSceneController : MonoBehaviour
 {
-    private int boostMeter = 0;
+    private int boostMeterValue = 0;
     private float timeLimit = 60;
+
+    public Text timerText;
+
+    public Slider boostMeter;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +28,14 @@ public class DashSceneController : MonoBehaviour
         GameStatus.Play = false;
     }
 
-    public void IncrementBoostMeter()
+    public void ChangeBoostMeterValue(int deltaMeter)
     {
-        boostMeter++;
+        boostMeterValue += deltaMeter;
     }
 
     public void ResetBoostMeter()
     {
-        boostMeter = 0;
+        boostMeterValue = 0;
     }
 
     public void IncreaseTimeLimit(float increaseValue)
@@ -43,9 +48,9 @@ public class DashSceneController : MonoBehaviour
         return timeLimit;
     }
 
-    public int GetBoostMeter()
+    public int GetBoostMeterValue()
     {
-        return boostMeter;
+        return boostMeterValue;
     }
 
 

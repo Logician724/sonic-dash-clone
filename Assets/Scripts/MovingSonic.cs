@@ -55,7 +55,7 @@ public class MovingSonic : MonoBehaviour
             gameObject.transform.position = sonicPosition;
         }
     }
-    private void TryToJump()
+    public void TryToJump()
     {
         if (isGrounded)
         {
