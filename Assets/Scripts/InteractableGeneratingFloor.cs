@@ -18,12 +18,12 @@ public class InteractableGeneratingFloor : MonoBehaviour
         Vector3 blueSphereDefaultPosition = blueShpere.transform.position;
         Vector3 coinDefaultPosition = coin.transform.position;
         Vector3 ironBallDefaultPosition = ironBall.transform.position;
-        Vector3 bombDefaultPosition = bomb.transform.position; 
+        Vector3 bombDefaultPosition = bomb.transform.position;
 
         // Instantiate collectible and obstacles on the floor
 
         GenerateBombs(3, bombDefaultPosition);
-        GenerateInteractable(5,blueShpere);
+        GenerateInteractable(5, blueShpere);
         GenerateInteractable(5, coin);
         GenerateInteractable(5, ironBall);
     }
@@ -44,7 +44,9 @@ public class InteractableGeneratingFloor : MonoBehaviour
             float currentLanePosition = possibleLanePositions[Random.Range(0, 3)];
             // Every bomb can span one, two, or three lanes.
             int laneCount = Random.Range(1, 4);
-            float bombZPosition = Random.Range(GENERATE_Z_MIN, GENERATE_Z_MAX);
+            float bombZPosition = Random.Range(
+                gameObject.transform.position.z - gameObject.transform.localScale.z / 2f ,
+                gameObject.transform.position.z + gameObject.transform.localScale.z / 2f );
             for (int j = 0; j < laneCount; j++)
             {
                 // For each lane craete a bomb
@@ -61,7 +63,9 @@ public class InteractableGeneratingFloor : MonoBehaviour
         for (int i = 0; i < interactableCount; i++)
         {
             float currentLanePosition = possibleLanePositions[Random.Range(0, 3)];
-            float interactableZPosition = Random.Range(GENERATE_Z_MIN, GENERATE_Z_MAX);
+            float interactableZPosition = Random.Range(
+                gameObject.transform.position.z - gameObject.transform.localScale.z / 2f ,
+                gameObject.transform.position.z + gameObject.transform.localScale.z / 2f );
             GameObject currentInteractable = Instantiate(
                 interactablePrefab,
                 new Vector3(currentLanePosition, interactablePrefab.transform.position.y, interactableZPosition),

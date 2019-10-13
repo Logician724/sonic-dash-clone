@@ -35,6 +35,13 @@ public class MovingSonic : MonoBehaviour
         {
             TryToJump();
         }
+        
+        
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     private void TryToMoveLeft()
@@ -57,10 +64,11 @@ public class MovingSonic : MonoBehaviour
     }
     public void TryToJump()
     {
+        
         if (isGrounded)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpDistance, 0), ForceMode.Impulse);
-            isGrounded = false;
+            
         }
 
     }
@@ -82,8 +90,14 @@ public class MovingSonic : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay()
+    private void OnCollisionStay(Collision collision)
     {
         isGrounded = true;
+    }
+
+    private void OnCollisionExit()
+    {
+
+        isGrounded = false;
     }
 }
