@@ -360,7 +360,9 @@ MonoBehaviour:
 
     Vectors Market
 
-    Icons8'
+    Icons8
+
+    SmashIcons'
 --- !u!222 &577041560
 CanvasRenderer:
   m_ObjectHideFlags: 0

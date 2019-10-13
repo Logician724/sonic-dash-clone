@@ -16,15 +16,7 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (isThirdPerson)
-            {
-                TriggerFirstPersonView();
-            }
-            else
-            {
-                TriggerThirdPersonView();
-            }
-
+            ToggleCameraView();
         }
         if (!isThirdPerson)
         {
@@ -34,8 +26,18 @@ public class CameraController : MonoBehaviour
     }
 
 
-
-    public void TriggerThirdPersonView()
+    public void ToggleCameraView()
+    {
+        if (isThirdPerson)
+        {
+            TriggerFirstPersonView();
+        }
+        else
+        {
+            TriggerThirdPersonView();
+        }
+    }
+    private void TriggerThirdPersonView()
     {
         mainCamera.transform.position = thirdPersonCameraPosition;
         mainCamera.transform.rotation = thirdPersonCameraRotation;
@@ -43,7 +45,7 @@ public class CameraController : MonoBehaviour
         isThirdPerson = true;
     }
 
-    public void TriggerFirstPersonView()
+    private void TriggerFirstPersonView()
     {
         mainCamera.fieldOfView = firstPersonFieldOfView;
         isThirdPerson = false;
